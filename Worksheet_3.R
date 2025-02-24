@@ -58,4 +58,48 @@ print(pca_5d$rotation)
 screeplot(pca_4d, main = "Screeplot of 4d dataset")
 screeplot(pca_5d, main = "Screeplot of 5d dataset")
 
+#-----------------Task 3----------------------------
+matr = matrix(c(0,1,3,3,5,
+                1,0,3,3,5,
+                3,3,2,0,5,
+                3,3,2,0,4,
+                5,5,5,4,0),
+              nrow =5, ncol = 5, byrow = TRUE)
+print(matr)
+dist_matrix = as.dist(matr)
+print(dist_matrix)
+hc = hclust(dist_matrix, method = "single")
+print(hc)
+plot(hc, main = "single linkage dendrogram")
 
+#hierarchial cusering on the iris dataset
+
+
+data(iris)
+
+hc_single = hclust(dist(iris[, - 5]),method = "single")
+hc_complete = hclust(dist(iris[, - 5]),method = "complete")
+hc_average = hclust(dist(iris[, -5]), method = "average")
+
+par(mfrow = c(1,3))
+plot(hc_single, main = "Single Linkage")
+plot(hc_complete, main = "complete Linkage")
+pot(hc_average, main = "Average Linkage")
+
+# Generate a heatmap using the iris dataset
+library(gplots)
+
+heatmap.2(as.matrix(iris[, -5]), 
+          trace = "none", 
+          col = heat.colors(256), 
+          main = "Heatmap of Iris Data")
+
+
+
+
+#----------------TASK 4---------------
+
+confusionmatrix = function(trueoutputs, predictedoutputs) {
+  tp = sum(trueoutput == 1 & predictedoutput == 1)
+  tn = su
+}
